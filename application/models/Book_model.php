@@ -9,8 +9,9 @@ class Book_model extends CI_Model{
 
   }
   function  index(){
-    $query = $this->db->get('books');
-    return $query->result_array();
+    return $this->db->get('books')->result_object();
   }
-
+  function  add(){
+    
+  }
 }

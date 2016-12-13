@@ -1,8 +1,4 @@
 <h3>Meus Livros</h3>
-<?php var_dump($books) ?>
-<?php foreach ($books as $book) {
-  # code...
-} ?>
 <table class="table">
   <thead>
     <tr>
@@ -16,14 +12,16 @@
     </tr>
   </thead>
   <tbody>
+    <?php foreach ($books as $book): ?>
     <tr>
-      <td>ID</td>
-      <td>Livro</td>
-      <td>Autor</td>
-      <td>Editora</td>
-      <td>Visualizar</td>
-      <td>Editar</td>
-      <td>Excluir</td>
+      <td><?= $book->id ?></td>
+      <td><?= $book->name ?></td>
+      <td><?= $book->author ?></td>
+      <td><?= $book->publishing_house ?></td>
+      <td>visualizar</td>
+      <td>editar</td>
+      <td>Apagar</td>
     </tr>
+  <?php endforeach ?>
   </tbody>
 </table>

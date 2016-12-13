@@ -16,7 +16,6 @@ class Book extends CI_Controller{
       'part' =>  "index",
       'books' => $this->books->index()
     ];
-
     $this->load->view('layout',$dados);
   }
   public function view()
@@ -24,7 +23,12 @@ class Book extends CI_Controller{
 
   }
   public function add(){
-
+    $dados = [
+      'title' => "Adicionar",
+      'part' =>  "add"
+    ];
+    
+    $this->load->view('layout',$dados);
   }
   public function edit($id = null){
 

@@ -30,7 +30,8 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">Adicionar</a></li>
+            <li>
+              <?php echo anchor('book/add', 'Adicionar'); ?>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -46,7 +47,7 @@
       </div>
     </nav>
     <div class="container">
-      <?php $this->load->view($part) ?>
+      <?php load_content_view($part) ?>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
