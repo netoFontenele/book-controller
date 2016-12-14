@@ -20,7 +20,12 @@ class Book extends CI_Controller{
   }
   public function view()
   {
-
+    $dados = [
+      'title' => 'Detalhes',
+      'part' =>  'view',
+      'book' => $this->books->view($this->uri->segment(3))
+    ];
+    $this->load->view('layout',$dados);
   }
   public function add(){
     $dados = [
@@ -31,7 +36,7 @@ class Book extends CI_Controller{
     if($this->form_validation->run() == TRUE){
         $data = elements(['name','author','resume','isbn','purchase_point','price','publishing_house','date_buy'],$this->input->post());
         $this->books->save($data);
-        $this->session->set_flashdata('save','Livro adicionado ao acervo com sucesso !');
+        $this->session->set_flashdata('infor','Livro adicionado ao acervo com sucesso !');
         redirect('book');
     }
     $this->load->view('layout',$dados);
