@@ -1,11 +1,11 @@
 <h1>Informações do Livro</h1>
 <hr>
-<form class="" action="index.html" method="post">
+  <?php echo form_open('book/add') ?>
   <div class="row">
     <div class="col-xs-12">
       <div class="form-group">
         <label for="name">Livro</label>
-        <input type="text" class="form-control" name="livro" id="livro" placeholder="Digite o nome do livro">
+        <input type="text" class="form-control" name="name" id="livro" placeholder="Digite o nome do livro">
       </div>
     </div>
     <div class="form-group">
@@ -56,7 +56,13 @@
   </div>
   <div class="row">
     <div class="col-xs-2">
-      <input type="submit" class="btn btn-block btn-primary" name="submit" value="Salvar">
+      <?php
+			$attributes = array(
+				'name' => 'submit',
+				'class' => 'button radius',
+				'value' => 'Salvar');
+			echo form_submit($attributes);
+			?>
     </div>
   </div>
 </form>

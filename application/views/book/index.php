@@ -1,3 +1,4 @@
+<?php echo $this->session->flashdata('save') ? $this->session->flashdata('save') :'' ?>
 <h3>Meus Livros</h3>
 <table class="table">
   <thead>

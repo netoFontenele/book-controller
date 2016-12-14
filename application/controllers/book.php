@@ -24,12 +24,19 @@ class Book extends CI_Controller{
   }
   public function add(){
     $dados = [
-      'title' => "Adicionar",
-      'part' =>  "add"
+      'title' => 'Adicionar',
+      'part' =>  'add',
     ];
-    
+    $this->form_validation->set_rules('name', 'Livro', 'required');
+    if($this->form_validation->run() == TRUE){
+        $data = elements(['name','author','resume','isbn','purchase_point','price','publishing_house','date_buy'],$this->input->post());
+        $this->books->save($data);
+        $this->session->set_flashdata('save','Livro adicionado ao acervo com sucesso !');
+        redirect('book');
+    }
     $this->load->view('layout',$dados);
   }
+
   public function edit($id = null){
 
   }

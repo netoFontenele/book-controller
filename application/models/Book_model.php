@@ -11,7 +11,7 @@ class Book_model extends CI_Model{
   function  index(){
     return $this->db->get('books')->result_object();
   }
-  function  add(){
-    
+  function  save($data){
+    $this->db->insert('books', $data);
   }
 }
