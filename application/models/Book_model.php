@@ -10,12 +10,18 @@ class Book_model extends CI_Model{
   function  index(){
     return $this->db->get('books')->result_object();
   }
-  public function view($id)
-  {
+  function  find_by_id($id){
     $this->db->where('id',$id);
     return $this->db->get('books')->result_object();
   }
-  function  save($data){
+  function save($data){
     $this->db->insert('books', $data);
+    if(array_key_exists('id',$data)){
+      $this->db->where('id',$data['id']);
+      $this->db->update('books',$data);
+    }
+  }
+  function edit(){
+    
   }
 }

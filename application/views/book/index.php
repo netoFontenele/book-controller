@@ -1,4 +1,3 @@
-<?php echo $this->session->flashdata('infor') ? $this->session->flashdata('infor') :'' ?>
 <h3>Meus Livros</h3>
 <table class="table">
   <thead>

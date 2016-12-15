@@ -48,6 +48,7 @@
       </div>
     </nav>
     <div class="container">
+      <?php echo $this->session->flashdata('infor') ? $this->session->flashdata('infor') :'' ?>
       <?php load_content_view($part) ?>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
