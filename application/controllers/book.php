@@ -23,7 +23,7 @@ class Book extends CI_Controller{
     $dados = [
       'title' => 'Detalhes',
       'part' =>  'view',
-      'book' => $this->books->view($this->uri->segment(3))
+      'book' => $this->books->view($this->uri->segment(3))?$this->books->view($this->uri->segment(3)) :redirect('book')
     ];
     $this->load->view('layout',$dados);
   }
@@ -32,12 +32,16 @@ class Book extends CI_Controller{
       'title' => 'Adicionar',
       'part' =>  'add',
     ];
-    $this->form_validation->set_rules('name', 'Livro', 'required');
-    if($this->form_validation->run() == TRUE){
-        $data = elements(['name','author','resume','isbn','purchase_point','price','publishing_house','date_buy'],$this->input->post());
+    if($this->input->post()){
+      $data = elements(['name','author','resume','isbn','purchase_point','price','publishing_house','date_buy'],$this->input->post());
+      if ($this->notBlank($data) == TRUE){
         $this->books->save($data);
         $this->session->set_flashdata('infor','Livro adicionado ao acervo com sucesso !');
         redirect('book');
+      }else{
+        $this->session->set_flashdata('infor','Todos os campos são de preenchimento obrigatório');
+        redirect('book');
+      }
     }
     $this->load->view('layout',$dados);
   }
@@ -48,5 +52,14 @@ class Book extends CI_Controller{
   public function delete($id)
   {
 
+  }
+  private function notBlank($checks)
+  {
+    foreach ($checks as $check) {
+      if ( empty($check) && $check !== '0' && $check !== 0){
+        $blank = true;
+      }
+    }
+    return $blank ? false: true;
   }
 }

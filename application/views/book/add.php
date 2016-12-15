@@ -58,7 +58,7 @@
     <div class="col-xs-2">
       <?php
 			$attributes = array(
-				'name' => 'submit',
+				'name' => 'save_book',
 				'class' => 'button radius',
 				'value' => 'Salvar');
 			echo form_submit($attributes);
