@@ -53,7 +53,9 @@ class Book extends CI_Controller{
       'book' => $this->books->find_by_id($this->uri->segment(3))?$this->books->find_by_id($this->uri->segment(3)) :redirect('book')
     ];
     if($this->input->post()){
-        $data = elements(['id','name','author','resume','isbn','purchase_point','price','publishing_house','date_buy'],$this->input->post());
+        $data = elements(['id','name','author','is_ebook','resume','isbn','purchase_point','price','publishing_house','date_buy'],$this->input->post());
+        var_dump($data);
+        exit();
         if ($this->notBlank($data) == TRUE){
           $this->books->save($data);
           $this->session->set_flashdata('infor','Livro alterado  com sucesso !');

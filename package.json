@@ -1,0 +1,26 @@
+{
+  "name": "book-controller",
+  "version": "1.0.0",
+  "description": "Aplicação criada com Codeigniter/MySQL para controle de um acervo de livros",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netoFontenele/book-controller.git"
+  },
+  "keywords": [
+    "Book",
+    "controller",
+    "acervo",
+    "Codeigniter",
+    "MySQL"
+  ],
+  "author": "Neto Fontenele",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/netoFontenele/book-controller/issues"
+  },
+  "homepage": "https://github.com/netoFontenele/book-controller#readme"
+}
