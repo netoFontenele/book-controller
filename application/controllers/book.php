@@ -50,12 +50,9 @@ class Book extends CI_Controller{
     $dados = [
       'title' => 'Editar',
       'part' =>  'edit',
-      'book' => $this->books->find_by_id($this->uri->segment(3))
-      //'book' => $this->books->find_by_id($this->uri->segment(3))?$this->books->find_by_id($this->uri->segment(3)) :redirect('book')
+      'book' => $this->books->find_by_id($this->uri->segment(3))?$this->books->find_by_id($this->uri->segment(3)) :redirect('book')
     ];
-    if($this->uri->segment(3)){
-      $data['id'] = $this->uri->segment(3);
-      if($this->input->post()){
+    if($this->input->post()){
         $data = elements(['id','name','author','resume','isbn','purchase_point','price','publishing_house','date_buy'],$this->input->post());
         if ($this->notBlank($data) == TRUE){
           $this->books->save($data);
@@ -65,15 +62,20 @@ class Book extends CI_Controller{
           $this->session->set_flashdata('infor','Todos os campos são de preenchimento obrigatório');
           redirect("book/edit/{$this->uri->segment(3)}");
         }
-      }
-    }else{
-      redirect('book');
     }
-    $this->load->view('layout',$dados);
+        $this->load->view('layout',$dados);
   }
   public function delete($id)
   {
-
+      $id = $this->uri->segment(3);
+      if(!empty($id)){
+          $this->books->delete($id);
+          $this->session->set_flashdata('infor','Apagado com sucesso');
+          redirect("book");
+      }else{
+          $this->session->set_flashdata('infor','Algo deu errado ao tentar apagar !');
+          redirect("book");
+      }
   }
   private function notBlank($checks)
   {

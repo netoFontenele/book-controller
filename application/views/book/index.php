@@ -17,8 +17,8 @@
       <td><?= anchor("book/view/$book->id",$book->name); ?></td>
       <td><?= $book->author ?></td>
       <td><?= $book->publishing_house ?></td>
-      <td>editar</td>
-      <td>Apagar</td>
+      <td><?= anchor("book/edit/$book->id",'Editar')?></td>
+      <td><?= anchor("book/delete/$book->id",'Apagar')?></td>
     </tr>
   <?php endforeach ?>
   </tbody>

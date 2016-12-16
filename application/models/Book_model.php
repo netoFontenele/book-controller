@@ -15,13 +15,15 @@ class Book_model extends CI_Model{
     return $this->db->get('books')->result_object();
   }
   function save($data){
-    $this->db->insert('books', $data);
     if(array_key_exists('id',$data)){
       $this->db->where('id',$data['id']);
       $this->db->update('books',$data);
+    }else{
+        $this->db->insert('books', $data);
     }
   }
-  function edit(){
-    
+  function delete($id){
+    $this->db->where('id',$id);
+    $this->db->delete('books');
   }
 }
